@@ -13,7 +13,7 @@ app = Flask(__name__)
 def index():
     """Default route"""
     return render_template(
-        'index.html', title='Welcome to Holberton',
+        '0-index.html', title='Welcome to Holberton',
         header="Hello world"
     )
 
