@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def home():
-    """Return page title and header"""
+def index():
+    """Default route"""
     return render_template(
         'index.html', title='Welcome to Holberton',
         header="Hello world"
@@ -19,4 +19,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
