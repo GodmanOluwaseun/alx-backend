@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""1-app
-Flask App with flask_babel instance.
+"""2-app
+Flask App with locale selector defined.
 """
 
 from flask import Flask, render_template, request
