@@ -26,6 +26,7 @@ def get_locale():
     """Returns selected language"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 @app.route('/')
 def index():
     """Default route"""
