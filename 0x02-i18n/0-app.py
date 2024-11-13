@@ -13,10 +13,11 @@ app = Flask(__name__)
 def home():
     """Return page title and header"""
     return render_template(
-        'index.html', title='Welcome to Holberton', 
+        'index.html', title='Welcome to Holberton',
         header="Hello world"
     )
 
 
 if __name__ == '__main__':
     app.run()
+ 
