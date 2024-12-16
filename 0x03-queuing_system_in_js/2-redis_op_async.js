@@ -14,20 +14,18 @@ client.on('error', (err) => {
 });
 
 const getAsync = promisify(client.get).bind(client);
+const setAsync = promisify(client.set).bind(client);
 
 /**
  * Sets key and value opair
  * @param {string} schoolName: Key
  * @param {string} value: value
  */
-function setNewSchool(schoolName, value) {
-  client.set(schoolName, value, (err, reply) => {
-    if (err) {
-      console.log(err.message);
-      return;
-    }
-    console.log(`Reply: ${reply}`);
-  });
+async function setNewSchool(schoolName, value) {
+  const reply = await client.set(schoolName, value);
+  if (reply) {
+    console.log('Reply: OK');
+  }
 }
 
 /**
@@ -40,6 +38,8 @@ async function displaySchoolValue(key) {
   return;
   }
 
-displaySchoolValue('ALX');
-setNewSchool('ALXSanFrancisco', '100');
-displaySchoolValue('ALXSanFrancisco');
+(async () => {
+  await displaySchoolValue('ALX');
+  await setNewSchool('ALXSanFrancisco', '100');
+  await displaySchoolValue('ALXSanFrancisco');
+}) ();
