@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Connects node to redis client on server.
 import { createClient } from 'redis';
+import { promisify } from 'util';
 
 const client = createClient();
 
@@ -11,6 +12,8 @@ client.on('connect', () => {
 client.on('error', (err) => {
   console.log('Redis client not connected to the server:', err.message);
 });
+
+const getAsync = promisify(client.get).bind(client);
 
 /**
  * Sets key and value opair
@@ -31,15 +34,11 @@ function setNewSchool(schoolName, value) {
  * Gets value of the supplied key.
  * @param {string} value:
  */
-function displaySchoolValue(value){
-  client.get(value, (err, value) => {
-    if (err) {
-      console.log(err.message);
-      return;
-    }
-    console.log(value);
-  });
-}
+async function displaySchoolValue(key) {
+  const value = await getAsync(key);
+  console.log(value);
+  return;
+  }
 
 displaySchoolValue('ALX');
 setNewSchool('ALXSanFrancisco', '100');
