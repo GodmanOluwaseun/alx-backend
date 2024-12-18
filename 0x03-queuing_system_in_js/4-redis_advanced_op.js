@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Connects node to redis client on server.
+// Sets and get hash on server.
 import { createClient, print } from 'redis';
 
 const client = createClient();
