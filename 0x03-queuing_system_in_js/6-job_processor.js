@@ -22,4 +22,4 @@ queue.process('push_notification_code', (job, done) => {
   sendNotification(phoneNumber, message);
   done();
 
-}); 
+});
